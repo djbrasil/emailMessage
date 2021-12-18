@@ -1,0 +1,27 @@
+{% load django_bootstrap5  %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Contato</title> 
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <!-- Formulario de contato -->
+    <div class="container-sm p-5">
+        <h1>Contato</h1>
+        {# Display django.contrib.messages as Bootstrap alerts #}
+        {% bootstrap_messages %}
+        <!-- formulario  -->
+        <form action="{% url 'contato' %}" method="post" class="form" autocomplete="off">
+            {% csrf_token %}
+            <!-- boostrap form deixa fileds formato boostrap -->
+            {% bootstrap_form form %} 
+            {% bootstrap_button button_type="submit" content="Enviar" %}
+            {% bootstrap_button button_type="reset" content="Cancel" %} 
+        </form> 
+    </div>  
+</body>
+</html>
